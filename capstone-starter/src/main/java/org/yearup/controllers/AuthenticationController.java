@@ -39,7 +39,6 @@ public class AuthenticationController {
         this.userDao = userDao;
         this.profileDao = profileDao;
     }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto loginDto) {
 
@@ -77,8 +76,7 @@ public class AuthenticationController {
             {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User Already Exists.");
             }
-
-            // create user
+// create user
             User user = userDao.create(new User(0, newUser.getUsername(), newUser.getPassword(), newUser.getRole()));
 
             // create profile
@@ -95,4 +93,3 @@ public class AuthenticationController {
     }
 
 }
-
